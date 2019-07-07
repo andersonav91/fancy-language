@@ -1,3 +1,4 @@
 # English strings go here for Rails i18n
 en:
   label_language_plural: "Languages"
+  label_language_title: "Languages"

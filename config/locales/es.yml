@@ -1,3 +1,4 @@
 # Spanish strings go here for Rails i18n
 es:
   label_language_plural: "Idiomas"
+  label_language_title: "Idiomas"
