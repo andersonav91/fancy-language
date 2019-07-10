@@ -24,6 +24,12 @@ module FancyLanguage
     def app_languages
       valid_languages
     end
+
+    def app_languages_with_label
+      valid_languages.select {|locale| ::I18n.exists?(:general_lang_name, locale)}.
+          map {|lang| [ll(lang.to_s, :general_lang_name), lang.to_s]}.
+          sort_by(&:first)
+    end
     
   end
 

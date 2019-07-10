@@ -7,3 +7,7 @@
 <h2>
   <%= l(:label_language_title) %>
 </h2>
+<%= select_tag(:language, options_for_select(@valid_languages , @current_language)) %>
+<% if @plugins.any? %>
+  <%= select_tag(:plugin, options_from_collection_for_select(@plugins , 'id', 'name', params[:plugin]), {include_blank: true}) %>
+<% end %>
