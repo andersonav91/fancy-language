@@ -11,3 +11,7 @@
 <% if @plugins.any? %>
   <%= select_tag(:plugin, options_from_collection_for_select(@plugins , 'id', 'name', params[:plugin]), {include_blank: true}) %>
 <% end %>
+
+<div>
+  <%= raw print_hash(@language_content) %>
+</div>
