@@ -2,3 +2,7 @@
 en:
   label_language_plural: "Languages"
   label_language_title: "Languages"
+  field_language: "Language"
+  field_language_plugin: "Plugin"
+  label_new_languaje: "New Language"
+  error_invalid_plugin_language_file: "There is no language file %{language} for plugin %{plugin}."

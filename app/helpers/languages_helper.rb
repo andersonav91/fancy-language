@@ -8,10 +8,14 @@ module LanguagesHelper
         tree << content_tag(:div, format, {style: "padding-left: #{spaces * level}px;"})
         tree << print_hash(val, spaces, level + 1)
       else
-        tree << content_tag(:div, format + " " + val.to_s, {style: "padding-left: #{spaces * level}px;"})
+        tree << content_tag(:div, format + " " + print_field(key, val.to_s), {style: "padding-left: #{spaces * level}px;"})
       end
     end
     tree
+  end
+
+  def print_field(key, val)
+    text_field_tag(key, val)
   end
 
 end

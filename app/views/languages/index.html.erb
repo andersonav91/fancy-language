@@ -1,17 +1,30 @@
 <% html_title(l(:label_language_title)) %>
 
 <div class="contextual">
-  <%#= link_to l(:label_new_languaje), add_new_language_path class: 'icon icon-plus' %>
+  <%= link_to l(:label_new_languaje), new_language_path, class: 'icon icon-add' %>
 </div>
 
 <h2>
   <%= l(:label_language_title) %>
 </h2>
-<%= select_tag(:language, options_for_select(@valid_languages , @current_language)) %>
-<% if @plugins.any? %>
-  <%= select_tag(:plugin, options_from_collection_for_select(@plugins , 'id', 'name', params[:plugin]), {include_blank: true}) %>
+
+<%= form_tag(languages_path, { :method => :get, :id => 'languages_filter_form' }) do %>
+  <fieldset>
+    <legend><%= l(:label_filter_plural) %></legend>
+
+    <label for='status'><%= l(:field_language) %>:</label>
+    <%= select_tag(:language, options_for_select(@valid_languages , @current_language)) %>
+
+    <% if @plugins.any? %>
+      <label for='status'><%= l(:field_language_plugin) %>:</label>
+      <%= select_tag(:plugin, options_from_collection_for_select(@plugins , 'id', 'name', @current_plugin), {include_blank: true}) %>
+    <% end %>
+
+    <%= submit_tag l(:button_apply), :class => "small", :name => nil %>
+    <%= link_to l(:button_clear), languages_path, :class => 'icon icon-reload' %>
+  </fieldset>
 <% end %>
 
-<div>
+<div class="language-content">
   <%= raw print_hash(@language_content) %>
 </div>

@@ -2,3 +2,7 @@
 es:
   label_language_plural: "Idiomas"
   label_language_title: "Idiomas"
+  field_language: "Idioma"
+  field_language_plugin: "Extensión"
+  label_new_languaje: "Nuevo Idioma"
+  error_invalid_plugin_language_file: "No existe el archivo de idioma %{language} para el plugin %{plugin}."

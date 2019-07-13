@@ -1,5 +1,11 @@
 /**********************************************************************/
 /* ICONS
 /**********************************************************************/
-#admin-menu a.languages { background-image: url(../images/languages.png);}
+#admin-menu a.languages { background-image: url(../images/languages.png); }
 
+/**********************************************************************/
+/* LANGUAGES AND LABELS LIST
+/**********************************************************************/
+
+.language-content {  }
+.language-content input { font-size: 10px; }
