@@ -17,12 +17,17 @@ class LanguagesController < ApplicationController
       @language_content = FancyLanguage.read_app_language_file_content(
           params[:language] ? params[:language] : @current_language
       )
-      flash[:error] = l(:error_invalid_plugin_language_file, plugin: @current_plugin, language: @current_language)
+      flash.now[:error] = l(:error_invalid_plugin_language_file, plugin: @current_plugin, language: @current_language)
       @current_plugin = nil
     end
   end
 
   def save
     raise I18n.backend.reload!.inspect
+  end
+
+  def plugin
+    current_plugin = params[:plugin]
+    # TODO
   end
 end

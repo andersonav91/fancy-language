@@ -17,7 +17,8 @@
 
     <% if @plugins.any? %>
       <label for='status'><%= l(:field_language_plugin) %>:</label>
-      <%= select_tag(:plugin, options_from_collection_for_select(@plugins , 'id', 'name', @current_plugin), {include_blank: true}) %>
+      <%= select_tag(:plugin, options_from_collection_for_select(@plugins , 'id', 'name', @current_plugin),
+                     {include_blank: true, onchange: "get_plugin_languages(this, '#{escape_javascript url_for(:action => 'plugin', :format => 'js')}')"}) %>
     <% end %>
 
     <%= submit_tag l(:button_apply), :class => "small", :name => nil %>
@@ -28,3 +29,7 @@
 <div class="language-content">
   <%= raw print_hash(@language_content) %>
 </div>
+
+<% content_for :header_tags do %>
+  <%= javascript_include_tag :fancy_language, plugin: 'fancy_language' %>
+<% end %>

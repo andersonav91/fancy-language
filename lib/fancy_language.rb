@@ -30,7 +30,15 @@ module FancyLanguage
           map {|lang| [ll(lang.to_s, :general_lang_name), lang.to_s]}.
           sort_by(&:first)
     end
-    
+
+    def plugin_languages
+      # TODO
+    end
+
+    def plugin_languages
+      # TODO
+    end
+
   end
 
 end
