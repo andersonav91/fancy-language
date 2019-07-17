@@ -29,7 +29,7 @@ class LanguagesController < ApplicationController
     end
     begin
       @language_content = @current_plugin ? FancyLanguage.read_plugin_language_file_content(@current_plugin,
-                                                                                            params[:language] ? params[:language] : @current_language
+          params[:language] ? params[:language] : @current_language
       ) : FancyLanguage.read_app_language_file_content(
           params[:language] ? params[:language] : @current_language
       )
