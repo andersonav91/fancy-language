@@ -12,14 +12,14 @@
   <fieldset>
     <legend><%= l(:label_filter_plural) %></legend>
 
-    <label for='status'><%= l(:field_language) %>:</label>
-    <%= select_tag(:language, options_for_select(@valid_languages , @current_language)) %>
-
     <% if @plugins.any? %>
       <label for='status'><%= l(:field_language_plugin) %>:</label>
       <%= select_tag(:plugin, options_from_collection_for_select(@plugins , 'id', 'name', @current_plugin),
-                     {include_blank: true, onchange: "get_plugin_languages(this, '#{escape_javascript url_for(:action => 'plugin', :format => 'js')}')"}) %>
+                     { prompt: l(:label_app_language) }) %>
     <% end %>
+
+    <label for='status'><%= l(:field_language) %>:</label>
+    <%= select_tag(:language, options_for_select(@valid_languages , @current_language)) %>
 
     <%= submit_tag l(:button_apply), :class => "small", :name => nil %>
     <%= link_to l(:button_clear), languages_path, :class => 'icon icon-reload' %>
@@ -29,6 +29,15 @@
 <div class="language-content">
   <%= raw print_hash(@language_content) %>
 </div>
+
+<%= javascript_tag do %>
+  var plugins_languages_url = '<%= url_for(:action => 'plugin', :format => 'js') %>';
+  $(document).ready(function(){
+    $( "#plugin" ).change(function() {
+      get_plugin_languages($(this), plugins_languages_url);
+    });
+  });
+<% end %>
 
 <% content_for :header_tags do %>
   <%= javascript_include_tag :fancy_language, plugin: 'fancy_language' %>

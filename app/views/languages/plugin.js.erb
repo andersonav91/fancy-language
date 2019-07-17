@@ -1,2 +1,1 @@
-// TODO
-//  $('#language').html('<%#= escape_javascript(options_for_select(@valid_languages)) %>');
+$('#language').empty().append('<%= escape_javascript(options_for_select(@valid_languages, @current_language)) %>');

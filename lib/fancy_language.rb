@@ -31,12 +31,17 @@ module FancyLanguage
           sort_by(&:first)
     end
 
-    def plugin_languages
-      # TODO
+    def plugin_languages(plugin)
+      plugin = Redmine::Plugin.find(plugin)
+      Dir.glob(File.join(plugin.directory, 'config', 'locales', '*.yml')).map do |language|
+        File.basename(language, ".*")
+      end
     end
 
-    def plugin_languages
-      # TODO
+    def plugin_languages_with_label(plugin)
+      plugin_languages(plugin).select {|locale| ::I18n.exists?(:general_lang_name, locale)}.
+          map {|lang| [ll(lang.to_s, :general_lang_name), lang.to_s]}.
+          sort_by(&:first)
     end
 
   end

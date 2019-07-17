@@ -6,3 +6,4 @@ en:
   field_language_plugin: "Plugin"
   label_new_languaje: "New Language"
   error_invalid_plugin_language_file: "There is no language file %{language} for plugin %{plugin}."
+  label_app_language: "--App Language--"
