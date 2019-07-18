@@ -26,9 +26,12 @@
   </fieldset>
 <% end %>
 
-<div class="language-content">
+<%= form_tag(languages_path, { :method => :put, :id => 'languages_save_form' }) do %>
+<div class="box language-content">
   <%= raw print_hash(@language_content) %>
 </div>
+<%= submit_tag l(:button_save) %>
+<% end %>
 
 <%= javascript_tag do %>
   var plugins_languages_url = '<%= url_for(:action => 'plugin', :format => 'js') %>';

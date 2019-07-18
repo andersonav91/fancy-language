@@ -2,6 +2,8 @@ class LanguagesController < ApplicationController
 
   layout 'admin'
 
+  self.main_menu = false
+
   before_action :require_admin
 
   before_action :load_language_from_params, only: [:index, :plugin]
@@ -9,7 +11,7 @@ class LanguagesController < ApplicationController
   def index
   end
 
-  def save
+  def update
     raise I18n.backend.reload!.inspect
   end
 
