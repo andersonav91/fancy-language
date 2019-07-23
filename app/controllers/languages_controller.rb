@@ -1,3 +1,5 @@
+require 'yaml'
+
 class LanguagesController < ApplicationController
 
   layout 'admin'
@@ -12,6 +14,10 @@ class LanguagesController < ApplicationController
   end
 
   def update
+    document = params[:document].to_yaml
+    # TODO: Add the path of the file to the params and save the file
+    File.open("language.yml", "w") { |file| file.write(document) }
+    raise params[:document].to_yaml.inspect
     raise I18n.backend.reload!.inspect
   end
 
