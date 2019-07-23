@@ -44,6 +44,15 @@ module FancyLanguage
           sort_by(&:first)
     end
 
+    def language_path(language = :en)
+      File.join(Rails.root, 'config', 'locales', "#{language}.yml").to_s
+    end
+
+    def plugin_language_path(plugin, language = :en)
+      plugin = Redmine::Plugin.find(plugin)
+      File.join(plugin.directory, 'config', 'locales', language + '.yml').to_s
+    end
+
   end
 
 end

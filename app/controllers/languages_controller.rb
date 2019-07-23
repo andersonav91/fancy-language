@@ -8,17 +8,15 @@ class LanguagesController < ApplicationController
 
   before_action :require_admin
 
-  before_action :load_language_from_params, only: [:index, :plugin]
+  before_action :load_language_from_params, only: [:index, :plugin, :update]
 
   def index
   end
 
   def update
     document = params[:document].to_yaml
-    # TODO: Add the path of the file to the params and save the file
-    File.open("language.yml", "w") { |file| file.write(document) }
-    raise params[:document].to_yaml.inspect
-    raise I18n.backend.reload!.inspect
+    File.open(@language_path, "w") { |file| file.write(document) }
+    redirect_to languages_path
   end
 
   def plugin
@@ -41,8 +39,16 @@ class LanguagesController < ApplicationController
       ) : FancyLanguage.read_app_language_file_content(
           params[:language] ? params[:language] : @current_language
       )
+      @language_path = @current_plugin ? FancyLanguage.plugin_language_path(@current_plugin,
+          params[:language] ? params[:language] : @current_language
+      ) : FancyLanguage.language_path(
+          params[:language] ? params[:language] : @current_language
+      )
     rescue
       @language_content = FancyLanguage.read_app_language_file_content(
+          params[:language] ? params[:language] : @current_language
+      )
+      @language_path = FancyLanguage.language_path(
           params[:language] ? params[:language] : @current_language
       )
       flash.now[:error] = l(:error_invalid_plugin_language_file, plugin: @current_plugin, language: @current_language)

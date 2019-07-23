@@ -28,6 +28,12 @@
 
 <%= form_tag(languages_path, { :method => :put, :id => 'languages_save_form' }) do %>
 <div class="box language-content">
+  <% if params[:language] %>
+    <%= hidden_field_tag(:language, params[:language]) %>
+  <% end %>
+  <% if params[:plugin] %>
+    <%= hidden_field_tag(:plugin, params[:plugin]) %>
+  <% end %>
   <%= raw print_hash(@language_content, '[document]') %>
 </div>
 <%= submit_tag l(:button_save) %>
