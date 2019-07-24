@@ -8,13 +8,14 @@ class LanguagesController < ApplicationController
 
   before_action :require_admin
 
-  before_action :load_language_from_params, only: [:index, :plugin, :update]
+  before_action :load_language_from_params, only: [:index, :plugin, :save]
 
   def index
   end
 
-  def update
-    document = params[:document].to_yaml
+  def save
+    document = params[:document].to_unsafe_h.as_json.to_yaml(indentation: 2)
+
     File.open(@language_path, "w") { |file| file.write(document) }
     redirect_to languages_path
   end

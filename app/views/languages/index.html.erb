@@ -1,7 +1,7 @@
 <% html_title(l(:label_language_title)) %>
 
 <div class="contextual">
-  <%= link_to l(:label_new_languaje), new_language_path, class: 'icon icon-add' %>
+  <%#= link_to l(:label_new_languaje), new_language_path, class: 'icon icon-add' %>
 </div>
 
 <h2>
@@ -26,7 +26,7 @@
   </fieldset>
 <% end %>
 
-<%= form_tag(languages_path, { :method => :put, :id => 'languages_save_form' }) do %>
+<%= form_tag(save_languages_path, { :method => :post, :id => 'languages_save_form' }) do %>
 <div class="box language-content">
   <% if params[:language] %>
     <%= hidden_field_tag(:language, params[:language]) %>

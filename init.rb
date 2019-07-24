@@ -1,7 +1,7 @@
 Redmine::Plugin.register :fancy_language do
   name 'Fancy Language'
   author 'Anderson Alvarez V'
-  description 'A plugin for editing the all languages in redmine, without the necessity to restart the rails server'
+  description 'A plugin for editing the all languages in redmine, without the necessity of restart the rails server'
   version '0.0.1'
   url 'http://fancy-redmine.com/language'
   author_url 'http://andersonav91.com/'
