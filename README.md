@@ -15,8 +15,9 @@ cd /path/to/redmine
 ```sh
 git clone https://github.com/andersonav91/fancy-language
 ```
+3. Rename the plugin folder to **fancy_language**
 
-3. **Restart** your Redmine instance
+4. **Restart** your Redmine instance
 
 **Note**: This plugin does not require to run the migration command and does not require settings.
 
